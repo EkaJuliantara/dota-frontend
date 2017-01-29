@@ -1,0 +1,1122 @@
+/* Larger than mobile */
+@media screen and (max-width: 400px) {
+    /* Header  sama dengan style.css*/
+    /* Site Menu */
+
+    .site-menu {
+        top: 100px;
+        width: 100%;
+        padding: 2px;
+        box-sizing: border-box;
+        background-color: #bf3b2b;
+        z-index: 3;
+    }
+    .site-menu .menu ul > li {
+        display: block !important;
+    }
+    .site-menu .menu {
+        position: static;
+        float: none ;
+
+    }
+    .site-menu .container {
+        width: 100% !important;
+        padding: 0px !important;
+    }
+    .site-menu .hamburger{
+        position: relative;
+        left: 38px;
+        bottom: 17px;
+        width: 50%;
+    }
+    .menu{
+        font-size:0.8em;
+        width:100%;
+        background:gray;
+        position:relative;
+        background-position:center;
+        background-size : 150%;
+        text-align:center;
+        z-index: 4;
+    }
+    .menu ul {
+        margin: 0;
+        padding: 0px 28px;
+        list-style-type: none;
+        list-style-image: none;
+    }
+    .menu li {
+        display: block;
+        padding:15px 0 15px 0;
+        border-bottom:#1d1f20 1px solid;
+    }
+    .menu li:hover{
+        display: block;
+        background:#181818;
+        padding:15px 0 15px 0;
+        border-bottom:#1d1f20 1px solid;
+    }
+    .menu ul li a {
+        text-decoration:none;
+        margin: 0px;
+        color:#fff;
+    }
+    .menu ul li a:hover {
+        color: #fff;
+        text-decoration:none;
+    }
+    .menu a{
+        text-decoration:none;
+        color:white;
+    }
+    .menu a:hover{
+        text-decoration:none;
+        color:white;
+    }
+
+    .site-menu .logo {
+        visibility: hidden;
+        position: fixed;
+    }
+
+    .site-menu .logo2 {
+        display: inline-block !important;
+        float: none;
+        width: 40px;
+        position: relative;
+        top : -5px;
+    }
+    .site-menu a{
+        display: inline-block ;
+        position: relative;
+        top: 15px;
+        left: 15px;
+        padding-bottom: 0px;
+        }
+/*
+    .menu {
+        height: 100%;
+        z-index: 4;
+        top: -5px;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 15px;
+    }
+
+
+    .menu ul > li a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s
+    }
+*/
+    .site-menu .closebtn {
+        position: relative;
+        top: 15px;
+        font-size: 38px;
+        visibility: visible;
+    }
+
+    .site-menu span{
+        visibility: visible;
+        position: relative;
+    }
+    /* Content */
+
+    .content {
+        height: 450px;
+    }
+
+    /* opening */
+
+    .opening {
+        position: relative;;
+        height: 515px;
+        display: block;
+    }
+
+    #opening .bg1{
+            width:210px;
+            height:49px;
+            top: 15px;
+    }
+
+    #opening {
+        background-position: center 25px;
+        background-size: 173%;
+        height: 324px;
+    }
+    #opening .teks{
+            top:187px;
+    }
+    a.register-btn{
+        padding: 10px 9px;
+        height: 46px;
+        width: 114px;
+    }
+
+    #opening2 {
+        background-image: url(../head2.png);
+        background-repeat: no-repeat;
+        background-position: 0 25px;
+        background-size: 100%;
+        z-index: 1;
+    }
+    #opening2 .teks{
+            position: relative;
+            top: 98px;
+    }
+    #opening2 .bg1{
+            width:350px;
+            height:55px;
+            border-radius: 125px;
+            background-color: #bf3b2b;
+            color: white;
+            position: relative;
+            top: 15px;
+            z-index: 2;
+    }
+
+    #opening2 .bg2{
+        border-radius: 20px;
+        background-color: #F8DA80;
+        color: black;
+        font-size: 25px;
+        padding: 25px 0px;
+        position: relative;
+        top: -25px;
+        z-index: 1;
+    }
+
+    #opening2 img{
+        width: 140px;
+        position: relative;
+        top: 37px;
+        left: 3.8px;
+    }
+    .opening .logo2{
+        display: block;
+        width: 200px;
+        position: relative;
+        top: 145px;
+        left: 15px;
+    }
+
+
+    /*bab1*/
+
+    #bab1{
+        height: 490px;
+        position: static;
+        box-sizing: border-box;
+        background-color: #8ccdbc;
+        padding: 0px !important;
+    }
+    #bab1 img {
+        position: static;
+        opacity: 0.5;
+        width: 200px;
+        height: 350px;
+        z-index: 1;
+    }
+
+    #bab1 .color{
+        position: absolute;
+        z-index: 2;
+        padding: 0px 41px !important;
+    }
+
+    #bab1 .huruf{
+        opacity: 1 !important;
+        color: black;
+    }
+
+    /*syarat*/
+    #juduls h2{
+        position: relative;
+        top: 50px;
+        background-color: #BF3B2B;
+        border-radius: 125px;
+        width: 278px;
+        font-size: 31px;
+
+    }
+    #juduls .six {
+        position: relative;
+        bottom: -30px;
+    }
+    #syarat{
+        padding: 50px 0;
+        position: relative;
+        top: 5px;
+        bottom: 5px;
+    }
+    .vr{
+        display: none;
+    }
+
+    #syarat li{
+        background-color: #F8DA80;
+        border-radius: 25px;
+        padding: 10px 10px;
+        color: black
+
+    }
+
+    /*bab2*/
+
+    #bab2{
+        padding: 50px;
+        background-position: -100px -1000px;
+        background-size: 100%;
+     }
+    #bab2 h2{
+        width:89%;
+        color: white;
+    }
+    #bab2 img{
+        position: relative;
+        top: 50px;
+        width: 82%;
+        margin: 0px 0;
+    }
+
+    #bab2 .twelve{
+        position: relative;
+        left: 0px;
+    }
+
+    #bab2 .four{
+        width:100%;
+        position: relative;
+        top: 0px;
+        margin-left: 0px !important;
+        height: 353px;
+    }
+
+    #bab2 h4{
+        font-size: 20px;
+    }
+
+    #bab2 .tropi{
+        padding: 0px 9%;
+    }
+
+
+    /*bab3*/
+
+    .bab3 {
+        background: #0a1a2e;
+        background-image: url(../paralax.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 700px ;
+
+    }
+    a.register-btn2{
+        width: 300px;
+        height: auto;
+        background-color:#F8DEA3;
+        font-size: 18px;
+        margin: 60px 0;
+        padding: 15px 0;
+        color: black ;
+        border-radius: 125px;
+    }
+
+    div.register-btn2-change:hover a.register-btn2{
+        background: #bf3b2b;
+        color: white;
+    }
+
+    div.register-btn2-change{
+        width: 300px;
+    }
+
+
+    /*penutup */
+
+        #penutup .bullet {
+            width: 100%;
+        }
+
+        #penutup img{
+            width: 50px;
+        }
+
+        #penutup .gambar {
+
+            width: 100%;
+            left: 0px;
+
+        }
+
+        #penutup .columns {
+            width: 100% !important;
+            margin-left: 0px !important;
+        }
+
+
+    /*reveal*/
+
+        /* Ensure elements load hidden before ScrollReveal runs */
+        .sr #bab1
+        .sr #bab2
+        .sr #bab3
+        .sr #penutup
+        .sr #opening
+        .sr #syarat
+        .sr #juduls
+        .sr #judulj
+        .sr #cd-timeline{ visibility: hidden; }
+
+        /* add perspective to your container */
+        #bab1 .container {
+            perspective: 800px;
+            padding: 29px 0px 0px 0px !important
+         }
+
+
+    #pendaftaran .breadcrumb {
+    	float:right;
+    	background:transparent;
+    	margin-top:0;
+    	margin-bottom:0;
+    	padding:7px 5px;
+    	position:relative;
+    	top:15px;
+    	right:10px;
+    	border-radius:2px;
+        z-index: 2;
+    }
+    #pendaftaran .breadcrumb li {
+    	color:white;
+    	list-style:none;
+    	display:inline-block;
+    }
+
+
+    #pendaftaran .breadcrumb>li+li:before {
+    	content:'>\00a0'
+    }
+
+    #pendaftaran a {
+        display: inline-block !important;
+    }
+
+    .section-title {
+        margin-top:5px;
+    }
+
+    /*form*/
+
+    .vr2{
+        width:1px;
+        background-color:white;
+        position: absolute;
+        top:0;
+        bottom:0;
+        height: auto;
+        left: 1px;
+        margin: 0 0px
+    }
+
+    #syarat2 .srt{
+        margin-left: 10px;
+        width: 500px;
+    }
+
+    #syarat2 .juduls2{
+        background-position: fixed;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    #gab button{
+        background-color: #bf3b2b;
+        margin: 0;
+        padding: 10px 15px;
+        line-height: inherit;
+        font-size: 16px;
+        height: auto;
+
+    }
+
+    #gab .kiri{
+        position: relative;
+        left: -35px;
+    }
+
+    input {
+        color: black;
+    }
+
+    button.register-btn3{
+        background-color: #F8DEA3 !important;
+        color: black;
+    }
+
+    div.register-btn3-change:hover button.register-btn3 {
+        background: #bf3b2b !important;
+        color: white;
+    }
+
+    div.register-btn3-change{
+        width: 100px;
+    }
+}
+
+/* Larger than mobile */
+@media screen and (max-width: 550px) and (min-width: 401px) {
+    /* Header  sama dengan style.css*/
+    /* Site Menu */
+
+    .site-menu {
+        padding: 6px
+    }
+    .site-menu .menu ul > li {
+        display: block !important;
+    }
+    .site-menu .menu {
+        position: static ;
+        top: 0px ;
+        float: none ;
+        overflow-y: scroll;
+
+    }
+    .site-menu .logo {
+        visibility: hidden;
+        position: fixed;
+    }
+
+    .site-menu .logo2 {
+        display: inline-block !important;
+        float: none;
+        width: 60px;
+        position: relative;
+        top : -5px;
+    }
+    .site-menu a{
+        display: inline-block ;
+        position: relative;
+        top: 15px;
+        left: 15px;
+        padding-bottom: 15px;
+        }
+    /*.menu {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 4;
+        top: -5px;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 15px;
+    }
+
+    .menu ul > li a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s
+    }*/
+    .site-menu .container {
+        width: 100% !important;
+        padding: 0px !important;
+    }
+    .site-menu .hamburger{
+        position: relative;
+        left: 38px;
+        bottom: 17px;
+        width: 50%;
+    }
+    .menu{
+        font-size:0.8em;
+        width:100%;
+        background:gray;
+        position:relative;
+        background-position:center;
+        background-size : 150%;
+        text-align:center;
+        z-index: 4;
+    }
+    .menu ul {
+        margin: 0;
+        padding: 0px 28px;
+        list-style-type: none;
+        list-style-image: none;
+    }
+    .menu li {
+        display: block;
+        padding:15px 0 15px 0;
+        border-bottom:#1d1f20 1px solid;
+    }
+    .menu li:hover{
+        display: block;
+        background:#181818;
+        padding:15px 0 15px 0;
+        border-bottom:#1d1f20 1px solid;
+    }
+    .menu ul li a {
+        text-decoration:none;
+        margin: 0px;
+        color:#fff;
+    }
+    .menu ul li a:hover {
+        color: #fff;
+        text-decoration:none;
+    }
+    .menu a{
+        text-decoration:none;
+        color:white;
+    }
+    .menu a:hover{
+        text-decoration:none;
+        color:white;
+    }
+
+    .site-menu .closebtn {
+        position: relative;
+        top: 17px;
+        font-size: 60px;
+        visibility: visible;
+        left: -29
+    }
+    .site-menu .openbtn {
+        font-size: 38px;
+        visibility: visible;
+    }
+    .site-menu span{
+        visibility: visible;
+        position: relative;
+    }
+    /* opening */
+
+    .opening {
+        position: relative;;
+        height: 515px;
+        display: block;
+    }
+
+    #opening {
+        background-position: center 25px;
+        background-size: 165%;
+        height: 391px;
+    }
+
+    #opening .teks{
+        top: 251px;
+    }
+
+    #opening2 .teks{
+            position: relative;
+            top: 98px;
+    }
+    #opening2 {
+        background-image: url(../head2.png);
+        background-repeat: no-repeat;
+        background-position: 0 25px;
+        background-size: 100%;
+        z-index: 1;
+    }
+
+
+
+    #opening2 .bg1{
+            width:350px;
+            height:55px;
+            border-radius: 125px;
+            background-color: #bf3b2b;
+            color: white;
+            position: relative;
+            top: 15px;
+            z-index: 2;
+    }
+
+    #opening2 .bg2{
+        border-radius: 20px;
+        background-color: #F8DA80;
+        color: black;
+        font-size: 25px;
+        padding: 25px 0px;
+        position: relative;
+        top: -25px;
+        z-index: 1;
+    }
+
+    #opening2 img{
+        width: 140px;
+        position: relative;
+        top: 37px;
+        left: 3.8px;
+    }
+    .opening .logo2{
+        display: block;
+        width: 200px;
+        position: relative;
+        top: 145px;
+        left: 15px;
+    }
+
+
+    /*bab1*/
+
+    #bab1{
+        height: 490px;
+    }
+
+    #bab1 .columns {
+        width: 100% !important;
+    }
+    #bab1 img {
+        position: static;
+        opacity: 0.3;
+        width: 200px;
+        height: 350px;
+        z-index: 1;
+    }
+
+    #bab1 .color{
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+    }
+
+    #bab1 .huruf{
+        opacity: 1 !important;
+        color: black;
+    }
+
+    /*syarat*/
+    #juduls h2{
+        position: relative;
+        top: 50px;
+        background-color: #BF3B2B;
+        border-radius: 125px;
+        width: 324px;
+    }
+    #syarat .eight {
+        width: 100% !important;
+        margin-left: 0px !important;
+    }
+    #syarat{
+        padding: 50px 0;
+        position: relative;
+        top: 5px;
+        bottom: 5px;
+    }
+    .vr{
+        display: none;
+    }
+
+    #syarat li{
+        background-color: #F8DA80;
+        border-radius: 25px;
+        padding: 10px 10px;
+        color: black
+
+    }
+
+    /*bab2*/
+
+    #bab2{
+        box-sizing: border-box;
+        margin-left: 0;
+        padding: 50px;
+        background-image: url(../foot.png);
+        background-position: -100px -1000px;
+        background-size: 100%;
+        background-color: #0B1A2E;
+        background-repeat: no-repeat;
+        height: auto;
+
+    }
+    #bab2 h2{
+        background-color:#BF3B2B;
+        border-radius: 125px;
+        width:75%;
+        color: white;
+    }
+    #bab2 img{
+        position: relative;
+        width: 141px;
+    }
+
+    #bab2 .twelve{
+        position: relative;
+        left: 0px;
+    }
+
+    #bab2 .four{
+        width:207px;
+        position: relative;
+        top: 60px;
+        margin-left: 0px !important;
+    }
+
+    #bab2 h4{
+        font-size: 20px;
+    }
+
+    #bab2 .tropi{
+        padding: 0px 21%;
+    }
+
+
+    /*bab3*/
+
+    .bab3 {
+        background-position: center 500px;
+
+    }
+
+
+
+
+    /*penutup */
+
+    #penutup .bullet {
+        width: 100%;
+    }
+
+    #penutup img{
+        width: 50px;
+    }
+
+    #penutup .gambar {
+
+        width: 100%;
+        left: 0px;
+
+    }
+
+    #penutup .columns {
+        width: 100% !important;
+        margin-left: 0px !important;
+    }
+
+    /*reveal*/
+
+        /* Ensure elements load hidden before ScrollReveal runs */
+        .sr #bab1
+        .sr #bab2
+        .sr #bab3
+        .sr #penutup
+        .sr #opening
+        .sr #syarat
+        .sr #juduls
+        .sr #judulj
+        .sr #cd-timeline{ visibility: hidden; }
+
+        /* add perspective to your container */
+        #bab1 .container { perspective: 800px; }
+
+        body{
+            background-position: 50% 0;
+            position: relative;
+        }
+
+
+    #pendaftaran .breadcrumb {
+    	float:right;
+    	background:transparent;
+    	margin-top:0;
+    	margin-bottom:0;
+    	padding:7px 5px;
+    	position:relative;
+    	top:15px;
+    	right:10px;
+    	border-radius:2px;
+        z-index: 2;
+    }
+    #pendaftaran .breadcrumb li {
+    	color:white;
+    	list-style:none;
+    	display:inline-block;
+    }
+
+
+    #pendaftaran .breadcrumb>li+li:before {
+    	content:'>\00a0'
+    }
+
+    #pendaftaran a {
+        display: inline-block !important;
+    }
+
+    .section-title {
+        margin-top:5px;
+    }
+
+    /*form*/
+
+    .vr2{
+        width:1px;
+        background-color:white;
+        position: absolute;
+        top:0;
+        bottom:0;
+        height: auto;
+        left: 1px;
+        margin: 0 0px
+    }
+
+    #syarat2 .srt{
+        margin-left: 10px;
+        width: 500px;
+    }
+
+    #syarat2 .juduls2{
+        background-position: fixed;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    #gab button{
+        background-color: #bf3b2b;
+        margin: 0;
+        padding: 10px 15px;
+        line-height: inherit;
+        font-size: 16px;
+        height: auto;
+
+    }
+
+    #gab .kiri{
+        position: relative;
+        left: -35px;
+    }
+
+    input {
+        color: black;
+    }
+
+    button.register-btn3{
+        background-color: #F8DEA3 !important;
+        color: black;
+    }
+
+    div.register-btn3-change:hover button.register-btn3 {
+        background: #bf3b2b !important;
+        color: white;
+    }
+
+    div.register-btn3-change{
+        width: 100px;
+    }
+}
+
+/* Larger than mobile */
+@media screen and (max-width: 750px) and (min-width: 551px) {
+    /* Site Menu */
+
+    .site-menu {
+        padding: 2px;
+    }
+
+    .site-menu .logo {
+        position: relative;
+        top: 22px;
+        right: 36px;
+    }
+
+    .site-menu .menu {
+        left: 80px;
+        width: 300px;
+    }
+    /* opening */
+
+    .opening {
+        height: 500px;
+        z-index: -1;
+    }
+
+    #opening .teks{
+            top:299px;
+    }
+    #opening {
+        background-size: 155%;
+        background-position: center 25px;
+    }
+
+    #opening2 {
+        background-position: center 25px;
+        background-size: 1160px;
+    }
+
+    #opening2 .teks{
+            top:40px;
+    }
+
+    #opening2 img{
+        width: 121px;
+        top: 55px;
+        left: 3px;
+    }
+    .opening .logo2{
+        display: block;
+        width: 200px;
+        position: relative;
+        top: 145px;
+        left: 15px;
+    }
+
+
+    /*bab1*/
+
+    #bab1{
+        height: 473px;
+        padding: 20px 0px;
+        z-index: 1;
+    }
+
+    /*syarat*/
+    .vr{
+        left: 10%;
+    }
+
+    /*bab2*/
+
+    #bab2{
+        background-position: -122px center;
+        background-size: 121%;
+        height: 648px;
+    }
+    #bab2 h2{
+        width:75%;
+        font-size: 30px;
+    }
+    #bab2 img{
+        width: 130px;
+    }
+
+    #bab2 .four{
+        height:407px;
+    }
+
+    #bab2 .kiri{
+        margin-left: 0.5%;
+        margin-right: 3%;
+    }
+
+    #bab2 .tengah{
+        margin-left: 0.5%;
+    }
+
+    #bab2 .kanan{
+        margin-left: 3%;
+        margin-right: 0.5%;
+    }
+
+    #bab2 h4{
+        font-size: 20px;
+    }
+
+    #penutup h3{
+        left: -4px;
+    }
+    #penutup .bullet {
+        width: 254px;
+        padding: 40px 20px;
+    }
+
+    #penutup .gambar {
+        width: 254px;
+    }
+
+
+    #pendaftaran .breadcrumb {
+    	padding:0px 0px;
+        font-size: 12px;
+    }
+    #pendaftaran .breadcrumb li {
+    	color:white;
+    	list-style:none;
+    	display:inline-block;
+    }
+
+
+    #pendaftaran .breadcrumb>li+li:before {
+    	content:'>\00a0'
+    }
+
+    #pendaftaran a {
+        display: inline-block !important;
+    }
+
+    .section-title {
+        margin-top:5px;
+    }
+
+    /*form*/
+
+    .vr2{
+        width:1px;
+        background-color:white;
+        position: absolute;
+        top:0;
+        bottom:0;
+        height: auto;
+        left: 1px;
+        margin: 0 0px
+    }
+
+    #syarat2 .srt{
+        margin-left: 10px;
+        width: 100%;
+    }
+
+    #syarat2 .juduls2{
+        background-position: fixed;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    #gab button{
+        background-color: #bf3b2b;
+        margin: 0;
+        padding: 10px 15px;
+        line-height: inherit;
+        font-size: 16px;
+        height: auto;
+
+    }
+
+    #gab .kiri{
+        position: relative;
+        left: -35px;
+    }
+
+    input {
+        color: black;
+    }
+
+    button.register-btn3{
+        background-color: #F8DEA3 !important;
+        color: black;
+    }
+
+    div.register-btn3-change:hover button.register-btn3 {
+        background: #bf3b2b !important;
+        color: white;
+    }
+
+    div.register-btn3-change{
+        width: 100px;
+    }
+}
