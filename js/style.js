@@ -4,8 +4,8 @@ $(document).scroll(function () {
      $('#site-menu').css('position', 'fixed');
      $('#site-menu').css('top', 0);
      $('#isi').css('position', 'relative');
-     $('#isi').css('top', 85);
-     $('.opening').css('height', $(window).width() * (550/1349));
+     $('#isi').css('top', 70);
+     $('.opening').css('height', $(window).width() * (610/1349));
      $('#opening').css('background-position-y', $(window).width() * (25/1349));
  } else if ($(document).scrollTop() >= ukuran2 && $(window).width() <= 750 && $(window).width() > 550 ) {
      $('#site-menu').css('position', 'fixed');
@@ -74,9 +74,8 @@ $(window).ready(function () {
 $(window).ready(function() {
  var ukuran3 = $(window).width() ;
  if($(window).width() > 750){
-     $('.opening').css('height', ukuran3 * (550/1349));
-     $('#opening').css('background-position-y', ukuran3 * (25/1349));
-     $('#opening .teks').css('top', ukuran3 * (346/1349));
+     $('.opening').css('height', ukuran3 * (590/1349));
+     $('#opening .teks').css('top', ukuran3 * (110/1349));
      $('#opening .bg1').css('width', ukuran3 * (300/1349));
      $('#opening .bg1').css('height', ukuran3 * (55/1349));
      $('#opening .bg1').css('top', ukuran3 * (15/1349));
@@ -86,7 +85,7 @@ $(window).ready(function() {
      $('a.register-btn').css('padding-left', ukuran3 * (20/1349));
      $('a.register-btn').css('padding-right', ukuran3 * (20/1349));
      $('a.register-btn').css('height', ukuran3 * (50/1349));
-     $('a.register-btn').css('width', ukuran3 * (150/1349));
+     $('a.register-btn').css('width', ukuran3 * (236/1349));
      $('a.register-btn').css('font-size', ukuran3 * (18/1349));
      $('#opening .bg1').css('margin-bottom', ukuran3 * (20/1349));
  }  else if(ukuran3 <= 750 && ukuran3 > 550) {

@@ -39,8 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-    background-color: #0B1A2E;
-    background-image: url('../stardust.png');
+    background-color: #0B0F10;
     font-family: "CaviarDreams";
 }
 
@@ -79,16 +78,18 @@ a{
 .site-menu {
     top: 100px;
     width: 100%;
-    padding: 10px;
     box-sizing: border-box;
-    background-color: #bf3b2b;
+    background-image: url('../bgheader.png');
+    background-repeat: no-repeat;
+    background-size: auto 57px;
     z-index: 3;
 }
 
 .site-menu .logo {
     display: block;
     float: left;
-    width: 80px;
+    width: 50px;
+    padding: 10px 5px;
 }
 
 .site-menu .menu {
@@ -139,22 +140,26 @@ a{
 .opening {
     position: relative;
     display: block;
-    height: 550px;
+    height: 590px;
 }
 
 #opening .teks{
         position: relative;
-        top:346px;
+        top:110px;
 }
 #opening2 .teks{
         position: relative;
         top: 55px;
 }
 #opening {
-    background-image: url(../head.png);
+    background-image: url(../head.JPG);
     background-repeat: no-repeat;
     background-size: 100%;
-    background-position: 0 25px;
+    background-position: 0px !important;
+}
+
+#opening img {
+    width: 332px;
 }
 
 #opening2 {
@@ -212,15 +217,15 @@ a{
 }
 
 a.register-btn{
-    background-color: #F8DEA3;
-    border-radius: 125px;
-    color: black;
+    background-color: #79281e;
+    border-radius: 5px;
+    color: white;
     margin: 0;
     line-height: inherit;
     position: relative;
     padding: 10px 20px;
     height: 50px;
-    width: 150px;
+    width: 236px;
 }
 
 div.register-btn-change:hover a.register-btn{
@@ -229,7 +234,7 @@ div.register-btn-change:hover a.register-btn{
 }
 
 div.register-btn-change{
-    width: 150px;
+    width: 280px;
 }
 
 
@@ -240,7 +245,7 @@ div.register-btn-change{
     height: 450px;
     position: static;
     box-sizing: border-box;
-    background-color: #8ccdbc;
+    background-image: url('../bg2.png');
     padding: 50px 50px;
 }
 #bab1 img {
@@ -249,8 +254,14 @@ div.register-btn-change{
     height: 350px;
 }
 
+#slideshow img {
+    width: auto;
+    height: auto;
+}
+
 #bab1 .color {
-    color: black;
+    text-shadow: 2px 2px 0px black;
+    color: #D7D7D7 !important;
 }
 /*syarat*/
 #juduls h2{
@@ -277,22 +288,24 @@ div.register-btn-change{
     left: 15%;
     margin: 0 50px
 }
+.bgsyarat {
+    background-image: url('../bgsyarat.png');
+    background-repeat: no-repeat;
+    background-size: 100% 441px;
+    text-shadow: 2px 2px 0px black;
+    color: #D7D7D7 !important;
+}
 
 /*bab2*/
 
 #bab2{
-    box-sizing: border-box;
-    margin-left: 0;
     padding: 50px;
-    background-image: url(../foot.png);
-    background-position: -100px -1000px;
-    background-size: 100%;
-    background-color: #0B1A2E;
+    background-image: url('../bg3.png');
     background-repeat: no-repeat;
     height: auto;
 }
 #bab2 h2{
-    background-color:#BF3B2B;
+    background-color:#f15b42;
     border-radius: 125px;
     width:50%;
     color: white;
@@ -312,8 +325,8 @@ div.register-btn-change{
 
 #bab2 .four{
     height:450px;
-    border-radius: 125px;
-    background-color:#F8DA80;
+    border-radius: 10px;
+    background-color:#786F66;
     background-position: center;
     color: black;
 }
@@ -338,12 +351,18 @@ div.register-btn-change{
     font-size: 20px;
 }
 
+.bgjadwal {
+    background-image: url('../jadwal.png');
+    background-repeat: no-repeat;
+    height: auto;
+    background-size: 100% 934px;
+}
 
 /*bab3*/
 
 .bab3 {
     background: #0a1a2e;
-    background-image: url(../paralax.jpg);
+    background-image: url(../paralax.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 0 1400px;
@@ -353,12 +372,12 @@ div.register-btn-change{
 a.register-btn2{
     width: 300px;
     height: auto;
-    background-color:#F8DEA3;
+    background-color:#79281e;
     font-size: 18px;
     margin: 60px 0;
     padding: 15px 0;
-    color: black ;
-    border-radius: 125px;
+    border-radius: 5px;
+    color: white ;
 }
 
 div.register-btn2-change:hover a.register-btn2{
@@ -375,26 +394,24 @@ div.register-btn2-change{
 
 #penutup {
     padding: 50px 0;
-    background-image: url(../foot.png);
-    background-position: -100px -1850px;
-    background-size: 100%;
-    background-color: #0B1A2E;
+    background-color: #0B0F10;
     background-repeat: no-repeat;
     height: 300px;
 }
 #penutup h3{
-    background-color: #bf3b2b;
+    background-color: #f15b42;
     border-radius: 125px;
     width: 200px;
     z-index: 2;
     position: relative;
 }
 #penutup .bullet {
-    background-color: #F8DA80;
-    border-radius: 25px;
+    background-color: #786F66;
+    border-radius: 10px;
     width: 400px;
     height: 50px;
-    color: black;
+    text-shadow: 2px 2px 1px black;
+    color: #D7D7D7 !important;
     margin: 0;
     padding: 45px 20px;
     position: relative;
@@ -407,10 +424,11 @@ div.register-btn2-change{
     width: 50px;
 }
 #penutup .gambar {
-    background-color: #F8DA80;
-    border-radius: 25px;
+    background-color: #786F66;
+    border-radius: 10px;
     width: 400px;
-    color: black;
+    text-shadow: 2px 2px 1px black;
+    color: #D7D7D7 !important;
     margin: 0;
     padding: 45px 20px;
     position: relative;
