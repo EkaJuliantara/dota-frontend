@@ -10,11 +10,9 @@ function openNav() {
     $(".menu").show();
     $(".closebtn").show();
     $(".openbtn").hide();
-    if($(document).scrollTop() >= 85 && $(window).width() <= 550 && $(window).width() > 400 )
+    if($(document).scrollTop() >= 85 && $(window).width() <=750 )
     {
-        document.getElementById('isi').style.top = "372px";
-    } else if ($(document).scrollTop() >= 85 && $(window).width() <= 400 && $(window).width() > 100 ) {
-        document.getElementById('isi').style.top = "372px";
+        document.getElementById('isi').style.top = "350px";
     }
 }
 

@@ -247,7 +247,7 @@ header h1 {
   background: white;
   border-radius: 0.25em;
   padding: 1em;
-  box-shadow: 0 3px 0 #d7e4ed;
+  box-shadow: 0 3px 0 #786F66;;
 }
 .cd-timeline-content:after {
   content: "";
@@ -255,7 +255,7 @@ header h1 {
   clear: both;
 }
 .cd-timeline-content h2 {
-  color: #303e49;
+  color: white;
 }
 .cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
   font-size: 13px;
@@ -281,7 +281,7 @@ header h1 {
 .cd-timeline-content .cd-date {
   float: left;
   padding: .8em 0;
-  opacity: .7;
+  /*opacity: .7;*/
 }
 .cd-timeline-content::before {
   content: '';
@@ -317,7 +317,7 @@ header h1 {
     top: 24px;
     left: 100%;
     border-color: transparent;
-    border-left-color: white;
+    border-left-color: #786F66;
   }
   .cd-timeline-content .cd-read-more {
     float: left;

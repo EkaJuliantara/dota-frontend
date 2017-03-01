@@ -143,17 +143,11 @@ a{
     height: 510px;
 }
 
-#opening2 {
-    height: 629px;
-}
 #opening .teks{
         position: relative;
         top:110px;
 }
-#opening2 .teks{
-        position: relative;
-        top: 55px;
-}
+
 #opening {
     background-image: url(../head.JPG);
     background-repeat: no-repeat;
@@ -175,34 +169,6 @@ a{
         top: 15px;
 }
 
-#opening2 .bg1{
-        width:100%;
-        height:100%;
-        border-radius: 10px;
-        background-image: url(../bgheader.png);
-        background-size: 100% 50px;
-        background-repeat: no-repeat;
-        color: white;
-        position: relative;
-        top: 15px;
-        z-index: 2;
-}
-
-#opening2 .bg2{
-    border-radius: 10px;
-    background-image: url(../bg2.png);
-    background-size: 100%;
-    color: white;
-    font-size: 25px;
-    padding: 25px 0px;
-    position: relative;
-    top: -25px;
-    z-index: 1;
-}
-
-#opening2 img{
-    width: 351px;
-}
 .opening .logo2{
     display: block;
     width: 200px;
@@ -301,7 +267,7 @@ div.register-btn-change{
 }
 #bab2 h2{
     background-color:#f15b42;
-    border-radius: 125px;
+    border-radius: 10px;
     width:50%;
     color: white;
 }
@@ -319,11 +285,11 @@ div.register-btn-change{
 }
 
 #bab2 .four{
-    height:450px;
     border-radius: 10px;
     background-color:#786F66;
     background-position: center;
     color: black;
+    margin: 0px 1%;
 }
 #bab2 h4{
     font-size: 20px;
@@ -337,8 +303,15 @@ div.register-btn-change{
 #cd-timeline .cd-date {
     color: white;
     font-size: 20px;
+    background-image: url(../bg2.png);
+    background-size: auto 140px;
+    background-repeat: no-repeat;
+    border-radius: 5px;
 }
-
+.cd-timeline-content {
+    background-color: #786F66 !important;
+    color : white;
+}
 #cd-timeline h2{
     font-size: 30px;
 }
@@ -398,7 +371,7 @@ div.register-btn2-change{
 }
 #penutup h3{
     background-color: #f15b42;
-    border-radius: 125px;
+    border-radius: 10px;
     width: 200px;
     z-index: 2;
     position: relative;
@@ -409,7 +382,7 @@ div.register-btn2-change{
     width: 400px;
     height: 50px;
     text-shadow: 2px 2px 1px black;
-    color: #D7D7D7 !important;
+    color: white;
     margin: 0;
     padding: 45px 20px;
     position: relative;
@@ -426,7 +399,7 @@ div.register-btn2-change{
     border-radius: 10px;
     width: 400px;
     text-shadow: 2px 2px 1px black;
-    color: #D7D7D7 !important;
+    color: white;
     margin: 0;
     padding: 45px 20px;
     position: relative;
@@ -456,34 +429,6 @@ div.register-btn2-change{
         background-position: 50% 0;
         position: relative;
     }
-
-
-#pendaftaran .breadcrumb {
-	float:right;
-	background:transparent;
-	margin-top:0;
-	margin-bottom:0;
-	padding:7px 5px;
-	position:relative;
-	top:15px;
-	right:10px;
-	border-radius:2px;
-    z-index: 2;
-}
-#pendaftaran .breadcrumb li {
-	color:white;
-	list-style:none;
-	display:inline-block;
-}
-
-
-#pendaftaran .breadcrumb>li+li:before {
-	content:'>\00a0'
-}
-
-#pendaftaran a {
-    display: inline-block !important;
-}
 
 .section-title {
     margin-top:5px;
@@ -531,22 +476,104 @@ div.register-btn2-change{
 }
 
 input {
-    color: black;
+    color: white;
 }
 
 button.register-btn3{
-    background-color: #F8DEA3 !important;
-    color: black;
+    background-color: #79281e!important;
+    color: white;
+}
+input.register-btn3{
+    background-color: #79281e!important;
+    color: white;
 }
 
 div.register-btn3-change:hover button.register-btn3 {
     background: #bf3b2b !important;
     color: white;
 }
+div.form-group:hover input.register-btn3 {
+    background: #bf3b2b !important;
+    color: white ;
+}
 
 div.register-btn3-change{
     width: 100px;
 }
+
+/*regsitrasi-sukses*/
+
+#opening2 {
+    height: 629px;
+}
+#opening2 .teks{
+        position: relative;
+        top: 55px;
+}
+
+#opening2 .bg1{
+        width:100%;
+        height:100%;
+        border-radius: 10px;
+        background-image: url(../bgheader.png);
+        background-size: 100% 50px;
+        background-repeat: no-repeat;
+        color: white;
+        position: relative;
+        top: 15px;
+        z-index: 2;
+}
+
+#opening2 .bg2{
+    border-radius: 10px;
+    background-image: url(../bg2.png);
+    background-size: 100%;
+    color: white;
+    font-size: 25px;
+    padding: 25px 0px;
+    position: relative;
+    top: -25px;
+    z-index: 1;
+}
+
+#opening2 img{
+    width: 351px;
+}
+
+
+#pendaftaran .breadcrumb {
+	float:right;
+	background:transparent;
+	margin-top:0;
+	margin-bottom:0;
+	padding:7px 5px;
+	position:relative;
+	top:15px;
+	right:10px;
+	border-radius:2px;
+    z-index: 2;
+}
+#pendaftaran .breadcrumb li {
+	color:white;
+	list-style:none;
+	display:inline-block;
+}
+
+
+#pendaftaran .breadcrumb>li+li:before {
+	content:'>\00a0'
+}
+
+#pendaftaran a {
+    display: inline-block !important;
+}
+
+.lass{
+    background-image: url(../paralax.png);
+    background-size: 100%;
+}
+
+/*lainnya*/
 
 .pemberitahuan {
     position: relative;
@@ -557,10 +584,6 @@ div.register-btn3-change{
     background-size: 100%;
 }
 
-.lass{
-    background-image: url(../paralax.png);
-    background-size: 100%;
-}
 
 .lebarA {
     width: 352px;
