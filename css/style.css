@@ -137,10 +137,10 @@ a{
 
 /* opening */
 
-.opening {
+.opening{
     position: relative;
     display: block;
-    height: 510px;
+    height: 621px;
 }
 
 #opening .teks{
@@ -148,8 +148,8 @@ a{
         top:110px;
 }
 
-#opening {
-    background-image: url(../head.JPG);
+#opening{
+    background-image: url(../head.png);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 0px !important;
