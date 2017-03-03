@@ -151,7 +151,7 @@ a{
 #opening{
     background-image: url(../head.png);
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     background-position: 0px !important;
 }
 
@@ -237,7 +237,14 @@ div.register-btn-change{
     padding: 50px 0;
     position: relative;
     top: 5px;
-    bottom: 5px;
+    text-align: left;
+}
+
+.transparent{
+    background:rgba(0,0,0,0.4);
+    width: 56%;
+    height: auto;
+    border-radius: 180px;
 }
 .vr{
     width:1px;
@@ -319,7 +326,7 @@ div.register-btn-change{
     font-size: 20px;
 }
 
-.bgjadwal {
+.bglogin {
     background-image: url('../jadwal.png');
     background-repeat: no-repeat;
     height: auto;
@@ -371,14 +378,14 @@ div.register-btn2-change{
 }
 #penutup h3{
     background-color: #f15b42;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 200px;
     z-index: 2;
     position: relative;
 }
 #penutup .bullet {
     background-color: #786F66;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 400px;
     height: 50px;
     text-shadow: 2px 2px 1px black;
@@ -396,7 +403,7 @@ div.register-btn2-change{
 }
 #penutup .gambar {
     background-color: #786F66;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 400px;
     text-shadow: 2px 2px 1px black;
     color: white;
@@ -409,6 +416,9 @@ div.register-btn2-change{
     z-index: 1;
 }
 
+#penutup a{
+    display: inline;;
+}
 /*reveal*/
 
     /* Ensure elements load hidden before ScrollReveal runs */
