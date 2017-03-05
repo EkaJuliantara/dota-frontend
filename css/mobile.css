@@ -136,6 +136,10 @@
         width: auto;
     }
 
+    .bgsyarat {
+        background-size: cover;
+    }
+
     /*bab2*/
     #bab2 {
         background-repeat: repeat-y;

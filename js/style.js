@@ -93,7 +93,7 @@ $('a[href^="#"]').on('click', function (e) {
  e.preventDefault();
     var target = this.hash,
     $target = $(target);
-       var scrollAmount = $target.offset().top - $("#header").height() + 16;
+       var scrollAmount = $target.offset().top - $("#header").height() + 60;
        if(target == "#timeline")
        {
          scrollAmount-=64;

@@ -149,10 +149,10 @@ a{
 }
 
 #opening{
-    background-image: url(../head.png);
+    background-image: url(../head.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0px !important;
+    background-position: center !important;
 }
 
 #opening img {
@@ -257,9 +257,10 @@ div.register-btn-change{
     margin: 0 50px
 }
 .bgsyarat {
-    background-image: url('../bgsyarat.png');
+    background-image: url('../bgsyarat.jpg');
     background-repeat: no-repeat;
     background-size: 100% 441px;
+    background-position: center;
     text-shadow: 2px 2px 0px black;
     color: #D7D7D7 !important;
 }
@@ -330,18 +331,18 @@ div.register-btn-change{
     background-image: url('../jadwal.png');
     background-repeat: no-repeat;
     height: auto;
-    background-size: 100% 934px;
+    background-size: 100% ;
 }
 
 /*bab3*/
 
 .bab3 {
     background: #0a1a2e;
-    background-image: url(../paralax.png);
+    background-image: url(../paralax.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 0 1400px;
-    background-size: 100% 800px ;
+    background-size: cover ;
 
 }
 a.register-btn2{
@@ -514,7 +515,7 @@ div.register-btn3-change{
 /*regsitrasi-sukses*/
 
 #opening2 {
-    height: 629px;
+    height: 810px;
 }
 #opening2 .teks{
         position: relative;
@@ -579,10 +580,10 @@ div.register-btn3-change{
 }
 
 .lass{
-    background-image: url(../paralax.png);
-    background-size: 100%;
+    background-image: url(../paralax.jpg);
+    background-size: cover;
+    background-position: center;
 }
-
 /*lainnya*/
 
 .pemberitahuan {
@@ -601,4 +602,8 @@ div.register-btn3-change{
 
 .lebarA2 {
     width: 319px;
+}
+
+.lebarB {
+    width: 300px
 }
