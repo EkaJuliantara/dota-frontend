@@ -93,7 +93,7 @@ $('a[href^="#"]').on('click', function (e) {
  e.preventDefault();
     var target = this.hash,
     $target = $(target);
-       var scrollAmount = $target.offset().top - $("#header").height() + 60;
+       var scrollAmount = $target.offset().top - $("#header").height();
        if(target == "#timeline")
        {
          scrollAmount-=64;
@@ -104,8 +104,10 @@ $('a[href^="#"]').on('click', function (e) {
 $(document).scroll(function() {
  var ukuran4 = ($(document).scrollTop() / 10) * 5;
  if($(window).width() > 750){
+     $('#opening').css('background-position-y', 100 - ukuran4);
      $('#bab3').css('background-position-y', 1800 - ukuran4);
  } else {
+     $('#opening').css('background-position-y', 100 - ukuran4);
      $('#bab3').css('background-position-y', 1300 - ukuran4);
  }
 })

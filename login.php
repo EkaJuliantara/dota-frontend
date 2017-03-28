@@ -1,11 +1,18 @@
+<?php
+  error_reporting(0);
+  ob_start();
+  session_start();
+  if (!$_SESSION['dota2_teams']['id']) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Dota2 Competition</title>
-  <meta name="description" content="UAJY Programming Competition">
+  <title>dota2 - Pendaftaran Berhasil</title>
+  <meta name="description" content="dota2">
   <meta name="author" content="Panitia IFEST #5 UAJY">
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -18,7 +25,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/style.css">
- <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/mobile.css">
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="scrollreveal-master/dist/scrollreveal.js"></script>
@@ -37,10 +44,11 @@
     <div class="container">
         <div class="row">
             <div class="twelve columns">
-                <center><div class="lebarA2"><a href="index.html" class="site-title">
+                <center>
+                <a href="http://ifest-uajy.com" class="site-title">
                     <img src=logo-ifest.png><h1>Informatics Festival #5</h1>
                 </a>
-            </div></center>
+            </center>
             </div>
         </div>
     </div>
@@ -65,13 +73,13 @@
         </div>
     </div>
 </section>
-
-<section id="isi" class="lass">
-    <section id="opening2" >
+<section id="isi">
+    <section id="opening3">
         <div class="container">
             <div class="row">
-                <section id="pendaftaran">
-                            <div class="twelve columns" >
+                <section id="pendaftaran" class="pendaftaran_berhasil">
+                            <div class="twelve columns kanan" >
+                                
                                 <ol class="breadcrumb">
                                     <li>
                                         <a href="index.html">
@@ -79,28 +87,37 @@
                                         </a>
                                     </li>
                                     <li class="active">
-                                        <a href="form.html">
-                                        Pendaftaran
-                                    </a>
-                                    </li>
-                                    <li class="active">
-                                        Registrasi-sukses
+                                        Login
                                     </li>
                                 </ol>
                             </div>
 
                 </section>
-                <div class="twelve columns">
 
-                    <center class="teks">
-                        <div class="lebarA">
-                        <a href="index.html"><img src="DOTA2.png"></a></div>
-                        <div class="pemberitahuan"><h2 class="bg1">Pendaftaran Berhasil!</h2>
-                        <p class="bg2">
+                <div ng-app="loginApp" ng-controller="loginCtrl" class="twelve columns">
+                <form ng-submit="loginSubmit()">
 
-    Mohon untuk menunggu proses verifikasi kami.<br/> Kami akan mengirimkan email kembali bila proses verifikasi sudah selesai </p></center>
-</div></div>
-            </div>
+                    <center class="teks warna">
+                    <div class="lebarB2">
+                        <h1 style="color: #D51D14;">Masuk Area Peserta</h1>
+                    <div class="pemberitahuan"><label><b>Email</b></label>
+                    <input ng-model="formData.email" type="email" placeholder="Enter Email" name="email" required>
+
+                    <label><b>Password</b></label>
+                    <input ng-model="formData.password" type="password" placeholder="Enter Password" name="password" required>
+                    <br/>
+
+                    <div class="btn4-change">
+                      <!--<button type="button" class="cancelbtn btn4">Cancel</button>-->
+                      <button ng-disabled="button == 'MASUK...'" type="submit" class="btn">{{ button }}</button>
+                    </div>
+
+                    <span ng-show="errors">{{ errors }}</span>
+
+                    </center>
+
+                </form>
+</div>
         </div>
     </section>
     <section id="penutup">
@@ -116,7 +133,6 @@
             </div>
         </div>
     </section>
-</section>
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
    <script>
@@ -137,5 +153,87 @@
 <script src="vertical-timeline/js/main.js"></script>
 <script src="vertical-timeline/js/modernizr.js"></script>
 
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script>
+
+function httpInterceptor() {
+  return {
+    request: function(config) {
+      return config;
+    },
+
+    requestError: function(config) {
+      return config;
+    },
+
+    response: function(res) {
+      return res;
+    },
+
+    responseError: function(res) {
+      return res;
+    }
+  }
+}
+
+var loginApp = angular.module("loginApp", [])
+  .factory('httpInterceptor', httpInterceptor)
+  .config(function($httpProvider) {
+    $httpProvider.interceptors.push('httpInterceptor');
+  });
+
+loginApp.controller("loginCtrl", function($scope, $http, $window) {
+
+  $scope.formData = {};
+  $scope.errors = "";
+
+  $scope.button = "MASUK";
+
+  $scope.loginSubmit = function () {
+
+    $scope.errors = "";
+
+    $scope.button = "MASUK...";
+
+    $http({
+      method  : 'POST',
+      url     : 'http://api.ifest-uajy.com/v1/dota2/login',
+      data    : $.param($scope.formData),
+      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+     })
+    .then(function(response) {
+      switch (response.status) {
+        case 404:
+          $scope.errors = response.data.errors;
+          $scope.button = "MASUK";
+        break;
+        case 500:
+          $scope.errors.ise = "Mohon maaf terdapat kesalahan di bagian server.";
+          $scope.button = "MASUK";
+          break;
+        default:
+          $scope.button = "MASUK...";
+
+          $http({
+            method  : 'POST',
+            url     : 'proses-login.php',
+            data    : $.param({ id: response.data.data.id }),
+            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+          }).then(function(data) {
+            $window.location.href = 'area-peserta.php';
+          });
+      }
+    });
+  }
+});
+
+</script>
+
 </body>
 </html>
+
+<?php
+  }else{
+    header("location: area-peserta.php");
+  }
+?>
