@@ -1,7 +1,7 @@
 <?php
   ob_start();
   session_start();
-  if ($_SESSION['dota2_teams']['id']) {
+  if ($_SESSION['dota_teams']['id']) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,14 +9,14 @@
     <!-- Basic Page Needs
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta charset="utf-8">
-    <title>dota2 - Area Peserta</title>
+    <title>DOTA 2 Competition - Area Peserta</title>
     <meta name="description" content="dota2">
     <meta name="author" content="Panitia IFEST #5 UAJY">
 
     <!-- Mobile Specific Metas
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href="css/normalize.css">
@@ -42,7 +42,7 @@
         </div>
     </section>
 
-    <section id="bglogin" ng-app="dota2App" ng-init="idTeam=<?php echo $_SESSION['dota2_teams']['id']; ?>" id="main">
+    <section id="bglogin" ng-app="dota2App" ng-init="idTeam=<?php echo $_SESSION['dota_teams']['id']; ?>" id="main">
       <div ng-controller="dataTeamCtrl" class="container">
         <div class="row">
           <div class="eight columns">
@@ -65,14 +65,6 @@
                       <th>No. HP</th>
                       <td><input ng-model="dataTeam.phone" type="text" name="phone" required /></td>
                     </tr>
-                    <tr>
-                      <th>Asal Sekolah</th>
-                      <td><input ng-model="dataTeam.origin" type="text" name="origin" /></td>
-                    </tr>
-                    <tr>
-                      <th>Kategori Lomba</th>
-                      <td>{{ dataTeam.category.name }}</td>
-                    </tr>
                   </table>
                   <button type="submit" class="btn">{{ button }}</button>
                 </form>
@@ -87,9 +79,6 @@
                 <table ng-show="dataDetailsLoaded" class="table">
                   <thead>
                     <tr>
-                      <th>
-                        Proposal
-                      </th>
                       <th>
                         Bukti Pembayaran
                       </th>
@@ -117,21 +106,41 @@
                   <thead>
                     <tr>
                       <th>Nama</th>
-                      <th>SKM</th>
+                      <th>ID Steam</th>
+                      <th>Peran</th>
+                      <th>Identitas</th>                      
                       <th></th>
                     </tr>
                   </thead>
                   <tbody id="member-list">
                     <tr ng-repeat="data in dataMembers" class="member">
                       <td>
-                        <input ng-show="hideMember == data.id" ng-model="data.name" type="text" required />
-                        <span ng-hide="hideMember == data.id">{{ data.name }}</span>
+                        <input ng-show="hideMember == data.id" ng-model="data.full_name" type="text" required style="width: 150px;" />
+                        <span ng-hide="hideMember == data.id">{{ data.full_name }}</span>
                       </td>
                       <td>
-                        <a href="http://api.ifest-uajy.com/storage/media/{{ data.media_name }}" target="_blank">Lihat</a>
+                        <input ng-show="hideMember == data.id" ng-model="data.steam_id" type="text" required />
+                        <span ng-hide="hideMember == data.id">{{ data.steam_id }}</span>
                       </td>
                       <td>
-                        <button ng-hide="hideMember == data.id" ng-click="hidingUpdateMember(data.id)" type="button" class="btn">Sunting</button> <button ng-show="hideMember == data.id" ng-click="updateMember(data)" type="button" class="btn">{{ btnUpdate }}</button> <button ng-click="destroyMember(data.id)" type="button" class="btn delete-member {{ data.id }}">Hapus</button>
+                        <select ng-show="hideMember == data.id && data.role != 'Captain'" ng-model="data.role" style="width: 100px;">
+                          <option value="Member">Anggota</option>
+                          <option value="Substitute">Cadangan</option>
+                        </select>
+                        <span ng-hide="hideMember == data.id && data.role != 'Captain'">{{ data.role }}</span>
+                      </td>
+                      <td>
+                        <a ng-show="data.media_id" href="http://127.0.0.1:8000/storage/media/{{ data.media_name }}" target="_blank">Lihat</a>
+                        <div ng-show="data.role == 'Captain' && !data.media_id">
+                          <button type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-size="10MB" class="btn">Unggah</button>
+                          <br>
+                          <span>{{ infoMedia }}</span>
+                        </div>
+                      </td>
+                      <td>
+                        <button ng-hide="hideMember == data.id || !data.media_id" ng-click="hidingUpdateMember(data.id)" type="button" class="btn">Sunting</button>
+                        <button ng-show="hideMember == data.id || (data.role == 'Captain' && !data.media_id)" ng-click="updateMember(data)" type="button" class="btn">{{ btnUpdate }}</button>
+                        <button ng-hide="data.role == 'Captain'" ng-click="destroyMember(data.id)" type="button" class="btn delete-member {{ data.id }}">Hapus</button>
                       </td>
                     </tr>
                   </tbody>
@@ -196,15 +205,14 @@
 
   app.controller('dataTeamCtrl', function($scope, $http, $compile, $timeout, Upload) {
 
-    $scope.dataTeam = {};
+    $scope.dataTeam = {}; 
     $scope.errors = {};
     $scope.status = "";
     $scope.button = "Simpan";
     $scope.dataTeam = {};
 
     $scope.btnSave = "Simpan";
-    $scope.infoProposal = "Pilih file untuk diunggah.";
-    $scope.infoReceipt = "Pilih file untuk diunggah.";
+    $scope.infoMedia = "Pilih file untuk diunggah.";
     $scope.dataDetail = {};
 
     $scope.dataTeamLoaded = 0;
@@ -213,7 +221,7 @@
 
     $scope.getTeam = function() {
 
-      $http.get("http://api.ifest-uajy.com/v1/dota2/"+$scope.idTeam).then(function (response) {
+      $http.get("http://127.0.0.1:8000/v1/dota/"+$scope.idTeam).then(function (response) {
 
         $scope.dataTeamLoaded = 0;
         $scope.dataTeam = response.data.data;
@@ -227,25 +235,14 @@
       });
     }
 
-    $scope.uploadProposal = function(file, errFiles) {
-      $scope.proposal = file;
-      $scope.errProposal = errFiles && errFiles[0];
-      $scope.infoProposal = $scope.proposal.name;
-    }
-
-    $scope.uploadReceipt = function(file, errFiles, id) {
-      $scope.receipt = file;
-      $scope.errReceipt = errFiles && errFiles[0];
-
-      if (id) {
-        $('.receipt-info.'+id).text($scope.receipt.name);
-      }else{
-        $scope.infoReceipt= $scope.receipt.name;
-      }
+    $scope.uploadMedia = function(file, errFiles, id) {
+      $scope.media = file;
+      $scope.errMedia = errFiles && errFiles[0];
+      $scope.infoMedia= $scope.media.name;
     }
 
     $scope.getDetail = function() {
-      $http.get("http://api.ifest-uajy.com/v1/dota2/"+$scope.idTeam).then(function (response) {
+      $http.get("http://127.0.0.1:8000/v1/dota/"+$scope.idTeam).then(function (response) {
 
         $scope.dataDetailsLoaded = 0;
         $('.details').remove();
@@ -253,20 +250,13 @@
 
         $scope.dataTeam = response.data.data;
 
-        if ($scope.dataTeam.proposal != 0) {
+        if ($scope.dataTeam.media_id) {
 
-          if ($scope.dataTeam.proposal != 0) {
-            $http.get("http://api.ifest-uajy.com/v1/media/"+response.data.data.proposal).then(function (response) {
-              $scope.dataTeam.proposal_name = response.data.data.file_name;
+            $http.get("http://127.0.0.1:8000/v1/media/"+response.data.data.media_id).then(function (response) {
+              $scope.dataTeam.media_name = response.data.data.file_name;
             });
-          }
-          if ($scope.dataTeam.receipt != 0) {
-            $http.get("http://api.ifest-uajy.com/v1/media/"+response.data.data.receipt).then(function (response) {
-              $scope.dataTeam.receipt_name = response.data.data.file_name;
-            });
-          }
 
-          var row = angular.element('<tr class="details"><td><a href="http://api.ifest-uajy.com/storage/media/{{ dataTeam.proposal_name }}" target="_blank">Lihat</a></td><td><a ng-show="dataTeam.receipt != 0" href="http://api.ifest-uajy.com/storage/media/{{ dataTeam.receipt_name }}" target="_blank">Lihat</a><button ng-show="dataTeam.receipt == 0" type="file" ngf-select="uploadReceipt($file, $invalidFiles, dataTeam.id)" accept="image/*" ngf-max-size="10MB" class="btn">Unggah</button> <span ng-show="dataTeam.receipt == 0" class="receipt-info {{ dataTeam.id }}">Pilih file untuk diunggah</span></td><td><span ng-show="dataTeam.status == 0">Menunggu verifikasi</span><span ng-show="dataTeam.status == 1">Lolos</span></td><td><button ng-show="dataTeam.receipt == 0" ng-click="updateDetail(dataTeam.id)" type="button" class="btn update-detail {{ dataTeam.id }}">Simpan</button><button ng-show="dataTeam.status == 0" ng-click="destroyDetail(dataTeam.id)" type="button" class="btn delete-detail {{ dataTeam.id }}">Hapus</button></td></tr>');
+          var row = angular.element('<tr class="details"><td><a href="http://127.0.0.1:8000/storage/media/{{ dataTeam.media_name }}" target="_blank">Lihat</a><td><span ng-show="dataTeam.status == 0">Tidak lolos</span><span ng-show="dataTeam.status == NULL">Menunggu verifikasi</span><span ng-show="dataTeam.status == 1">Lolos</span></td><td><button ng-show="dataTeam.status != 1" ng-click="destroyDetail(dataTeam.id)" type="button" class="btn delete-detail {{ dataTeam.id }}">Hapus</button></td></tr>');
 
           $('#detail-list').append(row);
 
@@ -274,7 +264,7 @@
 
         }else{
 
-          var row = angular.element('<tr class="new-details"><td><button type="file" ngf-select="uploadProposal($file, $invalidFiles)" ngf-max-size="10MB" class="btn">Unggah</button> <span>{{ infoProposal }}</span></td><td></td><td></td><td><button ng-click="addDetail()" type="button" class="btn">{{ btnSave }}</button></td></tr>');
+          var row = angular.element('<tr class="new-details"><td><button type="file" ngf-select="uploadMedia($file, $invalidFiles)" ngf-max-size="10MB" class="btn">Unggah</button> <span>{{ infoMedia }}</span></td><td></td><td><button ng-click="addDetail()" type="button" class="btn">{{ btnSave }}</button></td></tr>');
 
           $('#detail-list').append(row);
 
@@ -287,20 +277,20 @@
     }
 
     $scope.addDetail = function() {
-      if ($scope.proposal) {
+      if ($scope.media) {
 
         $scope.btnSave = "Menyimpan...";
 
-        $scope.proposal.upload = Upload.upload({
-            url: 'http://api.ifest-uajy.com/v1/media',
-            data: { media: $scope.proposal }
+        $scope.media.upload = Upload.upload({
+            url: 'http://127.0.0.1:8000/v1/media',
+            data: { media: $scope.media }
         }).then(function (response) {
 
-          $scope.infoProposal = "Upload";
-          $timeout(function() { $scope.infoProposal = "Pilih file untuk diunggah." }, 1000);
-          $scope.dataDetail['proposal'] = response.data.data.id;
+          $scope.infoMedia = "Upload";
+          $timeout(function() { $scope.infoMedia = "Pilih file untuk diunggah." }, 1000);
+          $scope.dataDetail['media_id'] = response.data.data.id;
           $scope.addDetailProcess();
-          $scope.proposal = "";
+          $scope.media = "";
         });
       }else{
           $scope.infoDocument = "Unggah proposal terlebih dahulu";
@@ -311,7 +301,7 @@
     $scope.addDetailProcess = function() {
       $http({
         method  : 'PATCH',
-        url     : 'http://api.ifest-uajy.com/v1/dota2/'+$scope.idTeam,
+        url     : 'http://127.0.0.1:8000/v1/dota/'+$scope.idTeam,
         data    : $.param($scope.dataDetail),
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
        })
@@ -321,45 +311,15 @@
       });
     }
 
-    $scope.updateDetail = function(id) {
-
-      if ($scope.receipt) {
-
-        $('.btn.update-detail.'+id).text('Menyimpan...');
-
-        $scope.receipt.upload = Upload.upload({
-            url: 'http://api.ifest-uajy.com/v1/media',
-            data: { media: $scope.receipt }
-        }).then(function (response) {
-
-          $scope.dataDetail['receipt'] = response.data.data.id;
-
-          $http({
-            method  : 'PATCH',
-            url     : 'http://api.ifest-uajy.com/v1/dota2/'+$scope.idTeam,
-            data    : $.param($scope.dataDetail),
-            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-           })
-          .then(function(data) {
-            $('.btn.update-detail.'+id).text('Simpan');
-            $('.receipt-info.'+id).text('Pilih file untuk diunggah');
-            $scope.getDetail();
-            $scope.receipt = "";
-          });
-        });
-      }
-    }
-
     $scope.destroyDetail = function(id) {
 
       $('.btn.delete-detail.'+id).text('Menghapus...');
 
-      $scope.dataDetail['proposal'] = 0;
-      $scope.dataDetail['receipt'] = 0;
+      $scope.dataDetail['media_id'] = 0;
 
       $http({
         method  : 'PATCH',
-        url     : 'http://api.ifest-uajy.com/v1/dota2/'+$scope.idTeam,
+        url     : 'http://127.0.0.1:8000/v1/dota/'+$scope.idTeam,
         data    : $.param($scope.dataDetail),
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
        })
@@ -378,7 +338,7 @@
 
       $http({
         method  : 'PATCH',
-        url     : 'http://api.ifest-uajy.com/v1/dota2/'+$scope.idTeam,
+        url     : 'http://127.0.0.1:8000/v1/dota/'+$scope.idTeam,
         data    : $.param($scope.dataTeam),
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
        })
@@ -424,7 +384,7 @@
     $scope.getMembers = function() {
 
       $scope.dataMembersLoaded = 0;
-      $http.get("http://api.ifest-uajy.com/v1/dota2/"+$scope.idTeam+'/members').then(function (response) {
+      $http.get("http://127.0.0.1:8000/v1/dota/"+$scope.idTeam+'/members').then(function (response) {
         if (response.data.data) {
           $scope.dataMembers = response.data.data;
         }else{
@@ -433,7 +393,7 @@
         $scope.dataMembersLoaded = 1;
 
         angular.forEach($scope.dataMembers, function(value, key) {
-          $http.get("http://api.ifest-uajy.com/v1/media/"+value.student_id_scan).then(function (response) {
+          $http.get("http://127.0.0.1:8000/v1/media/"+value.media_id).then(function (response) {
             value.media_name = response.data.data.file_name;
           });
         });
@@ -443,7 +403,7 @@
         var count = $scope.dataMembers.length;
 
         if (count != 5) {
-          var row = angular.element('<tr class="new-member"><td><input ng-model="newMembers.members[0][\'name\']" type="text" required="" /><br><span>{{ infoFullName }}</span></td><td><button type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-size="10MB" class="btn">Unggah</button><br><span>{{ infoMedia }}</span></td><td><button ng-click="addMembers()" type="button" class="btn">{{ btnSave }}</button></tr>');
+          var row = angular.element('<tr class="new-member"><td><input ng-model="newMembers.members[0][\'full_name\']" type="text" required="" style="width: 125px" /><br><span>{{ infoFullName }}</span></td><td><input ng-model="newMembers.members[0][\'steam_id\']" type="text" required="" /><br><span>{{ infoSteamId }}</span></td><td><select ng-model="newMembers.members[0][\'role\']" style="width: 100px"><option value="Member">Anggota</option><option value="Substitute">Cadangan</option></select><br><span>{{ infoRole }}</span></td><td><button type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-size="10MB" class="btn">Unggah</button><br><span>{{ infoMedia }}</span></td><td><button ng-click="addMembers()" type="button" class="btn">{{ btnSave }}</button></tr>');
           $('#member-list').append(row);
           $compile(row)($scope);
         }
@@ -453,71 +413,116 @@
     $scope.addMembers = function() {
 
       if ($scope.newMembers.members) {
-
-        $scope.infoFullName = "";
-
-        if ($scope.media) {
-
-          $scope.btnSave = "Menyimpan...";
-
-          $scope.media.upload = Upload.upload({
-              url: 'http://api.ifest-uajy.com/v1/media',
-              data: {media: $scope.media}
-          });
-
-          $scope.media.upload.then(function (response) {
-
-            $scope.newMembers.members[0]["media_id"] = 0;
-            $scope.newMembers.members[0]["student_id_scan"] = response.data.data.id;
-
-            $http({
-              method  : 'POST',
-              url     : 'http://api.ifest-uajy.com/v1/dota2/'+$scope.idTeam+'/members',
-              data    : $.param($scope.newMembers),
-              headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-             })
-            .then(function(response) {
-              switch (response.status) {
-                case 400:
-                  $scope.errors = response.data.errors;
-                  $scope.btnSave = "Simpan";
-                break;
-                case 500:
-                  $scope.errors.ise = "Mohon maaf terdapat kesalahan di bagian server.";
-                  $scope.button = "DAFTAR";
-                  break;
-                default:
-                  $scope.media = "";
-                  $scope.newMembers = {};
-                  $scope.btnSave = "Simpan";
-                  $scope.getMembers();
-                  $scope.infoMedia = "Pilih file untuk diunggah.";
-              }
-            });
-          });
-
+        if ($scope.newMembers.members[0]['full_name']) {
+          $scope.infoFullName = "";
         }else{
-          $scope.infoMedia = "Unggah kartu identitas!";
+          $scope.infoFullName = "Isi nama lengkap!";
         }
 
+        if ($scope.newMembers.members[0]['steam_id']) {
+          $scope.infoSteamId = "";
+        }else{
+          $scope.infoSteamId = "Isi id steam!";
+        }
+
+        if ($scope.newMembers.members[0]['role']) {
+          $scope.infoRole = "";
+        }else{
+          $scope.infoRole = "Pilih peran!";
+        }
       }else{
         $scope.infoFullName = "Isi nama lengkap!";
+        $scope.infoSteamId = "Isi id steam!";
+        $scope.infoRole = "Pilih peran!";
+      }
+
+      if (!$scope.infoFullName && !$scope.infoSteamId && !$scope.infoRole && $scope.media) {        
+
+        $scope.btnSave = "Menyimpan...";
+
+        $scope.media.upload = Upload.upload({
+            url: 'http://127.0.0.1:8000/v1/media',
+            data: {media: $scope.media}
+        });
+
+        $scope.media.upload.then(function (response) {
+
+          $scope.newMembers.members[0]['media_id'] = response.data.data.id;
+
+          $http({
+            method  : 'POST',
+            url     : 'http://127.0.0.1:8000/v1/dota/'+$scope.idTeam+'/members',
+            data    : $.param($scope.newMembers),
+            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+           })
+          .then(function(response) {
+            switch (response.status) {
+              case 400:
+                $scope.errors = response.data.errors;
+                $scope.btnSave = "Simpan";
+              break;
+              case 500:
+                $scope.errors.ise = "Mohon maaf terdapat kesalahan di bagian server.";
+                $scope.button = "DAFTAR";
+                break;
+              default:
+                $scope.media = "";
+                $scope.newMembers = {};
+                $scope.btnSave = "Simpan";
+                $scope.getMembers();
+                $scope.infoMedia = "Pilih file untuk diunggah.";
+            }
+          });
+        });
+
       }
     }
 
     $scope.updateMember = function(data) {
 
+      if (data.role == 'Captain' && !data.media_id) {
+        if ($scope.media) {
+
+          $scope.btnUpdate = "Menyimpan...";
+
+          $scope.media.upload = Upload.upload({
+              url: 'http://127.0.0.1:8000/v1/media',
+              data: { media: $scope.media }
+          }).then(function (response) {
+
+            $scope.infoMedia = "Upload";
+            $timeout(function() { $scope.infoMedia = "Pilih file untuk diunggah." }, 1000);
+            data['media_id'] = response.data.data.id;
+            data.new_capt = true;
+            $scope.updateMemberProcess(data);
+            $scope.media = "";
+
+          });
+        }else{
+            $scope.btnSave = "Simpan";
+        }
+      }else{
+        $scope.updateMemberProcess(data);
+      }
+    }
+
+    $scope.updateMemberProcess = function(data) {
+
       $scope.btnUpdate = "Menyimpan...";
 
       $http({
         method  : 'PATCH',
-        url     : 'http://api.ifest-uajy.com/v1/dota2/'+$scope.idTeam+'/members/'+data.id,
+        url     : 'http://127.0.0.1:8000/v1/dota/'+$scope.idTeam+'/members/'+data.id,
         data    : $.param(data),
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
        })
-      .then(function(data) {
+      .then(function(response) {
         $scope.hideMember = false;
         $scope.btnUpdate = "Simpan";
+
+        if (data.new_capt) {
+          $scope.getMembers();
+        }
       });
     }
 
@@ -529,7 +534,7 @@
 
       $('.btn.delete-member.'+id).text('Menghapus...');
 
-      $http.delete('http://api.ifest-uajy.com/v1/dota2/'+$scope.idTeam+'/members/'+id).then(function (response) {
+      $http.delete('http://127.0.0.1:8000/v1/dota/'+$scope.idTeam+'/members/'+id).then(function (response) {
         $scope.getMembers();
       })
       .then(function(data) {
