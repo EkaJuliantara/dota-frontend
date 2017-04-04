@@ -628,6 +628,7 @@ div.register-btn3-change{
     color: white;
     border-radius: 5px;
     float: right;
+    margin-top: 10px;
 }
 
 a.logout {
@@ -677,9 +678,16 @@ table input{
 button.btn{
     background-color:#79281e;
     color: white ;
+    padding: 0 5px;
+    height: auto;
+    line-height: 30px;
 }
 
 button.btn:hover{
     background-color: #bf3b2b;
     color: white;
+}
+
+select {
+    color: #000;
 }

@@ -2,7 +2,7 @@
   error_reporting(0);
   ob_start();
   session_start();
-  if (!$_SESSION['dota2_teams']['id']) {
+  if (!$_SESSION['dota_teams']['id']) {
 ?>
 
 <!DOCTYPE html>
@@ -197,7 +197,7 @@ loginApp.controller("loginCtrl", function($scope, $http, $window) {
 
     $http({
       method  : 'POST',
-      url     : 'http://api.ifest-uajy.com/v1/dota2/login',
+      url     : 'http://127.0.0.1:8000/v1/dota/login',
       data    : $.param($scope.formData),
       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
      })

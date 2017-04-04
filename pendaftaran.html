@@ -4,12 +4,13 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Dota2 Competition</title>
-  <meta name="description" content="UAJY Programming Competition">
+  <title>DOTA 2 Competition</title>
+  <meta name="description" content="DOTA 2 Competition">
   <meta name="author" content="Panitia IFEST #5 UAJY">
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <!-- CSS
@@ -29,6 +30,13 @@
   <script>
     window.sr = ScrollReveal();
   </script>
+
+  <style type="text/css">
+    .error-msg.ng-binding {
+      margin-bottom: 15px;
+      display: block;
+    }
+  </style>
 
  </head>
 <body >
@@ -90,45 +98,44 @@
             </div>
         </div>
     </section>
-    <section id="gab">
+    <section ng-app="registerApp" ng-controller="registerCtrl" id="gab">
         <div class="container">
             <div class="row">
                 <div class="six columns">
                     <div class="section register" data-anchor="register-form">
-
-                            <form method="POST">
+                            <form ng-submit="registerSubmit()">
                                 <div class="form-group">
                                     <label for="team_name">Nama Tim </label>
-                                    <input  class="form-control" type="text" name="team_name" required />
+                                    <input ng-model="dataTeam.name" class="form-control" type="text" name="name" required="" />
+                                    <span ng-show="errors.name[0]" class="error-msg">{{errors.name[0]}}</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email (Email Ketua Tim/Perwakilan)</label>
-                                    <input  class="form-control" type="email" name="email" required />
+                                    <input ng-model="dataTeam.email" class="form-control" type="email" name="email" required />
+                                    <span ng-show="errors.email[0]" class="error-msg">{{errors.email[0]}}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="school">No. Telpon</label>
-                                    <input class="form-control" type="text" name="Nomor" required />
+                                    <label for="phone">No. Telp.</label>
+                                    <input ng-model="dataTeam.phone" class="form-control" type="text" name="phone" required />
+                                    <span ng-show="errors.phone[0]" class="error-msg">{{errors.phone[0]}}</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Kata Sandi</label>
-                                    <input  class="form-control" type="password" name="password" required />
+                                    <input ng-model="dataTeam.password" class="form-control" type="password" name="password" required />
+                                    <span ng-show="errors.password[0]" class="error-msg">{{errors.password[0]}}</span>
                                 </div>
-                                <div class="form-group">
-                                    <label for="password_conf">Kata Sandi (konfirmasi)</label>
-                                    <input  class="form-control" type="password" name="password_conf" required />
-                                </div>
-                                <br/><br/>
+                                <br/>
                                 <p>CAPTAIN :</p>
                                 <div class="form-group">
                                     <label for="team_name">Nama : </label>
-                                    <input  class="form-control" type="text" name="captain_name" required />
+                                    <input ng-model="dataCaptain.members[0]['full_name']" class="form-control" type="text" name="full_name" required />
                                 </div>
                                 <div class="form-group">
-                                    <label for="team_name">Nomor ID Steam(URL) : </label>
-                                    <input  class="form-control" type="text" name="ID_Steam" required />
+                                    <label for="steam_id">ID Steam : </label>
+                                    <input ng-model="dataCaptain.members[0]['steam_id']" class="form-control" type="text" name="steam_id" required />
                                 </div>
                                 <div class="register-btn3-change">
-                                <button class="register-btn3" type="submit" >Daftar</button></div>
+                                <button ng-disabled="button == 'MENDAFTAR...'" class="register-btn3" type="submit">{{ button }}</button></div>
                             </form>
                         </div>
                 </div>
@@ -171,6 +178,8 @@
     </section>
 </section>
 <section id="penutup">
+    <br>
+    <br>
     <div class="container">
         <div class="row">
             <div class="six columns">
@@ -203,5 +212,99 @@
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="js/style.js"></script>
  <script src="js/menu.js"> </script>
+
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+
+<script>
+
+function httpInterceptor() {
+  return {
+    request: function(config) {
+      return config;
+    },
+
+    requestError: function(config) {
+      return config;
+    },
+
+    response: function(res) {
+      return res;
+    },
+
+    responseError: function(res) {
+      return res;
+    }
+  }
+}
+
+var registerApp = angular.module("registerApp", [])
+  .factory('httpInterceptor', httpInterceptor)
+  .config(function($httpProvider) {
+    $httpProvider.interceptors.push('httpInterceptor');
+  });
+
+registerApp.controller("registerCtrl", function($scope, $http, $window) {
+
+  $scope.dataTeam = {};
+  $scope.dataCaptain = {};
+  $scope.errors = {};
+
+  $scope.button = "DAFTAR";
+
+  $scope.registerSubmit = function () {
+
+    $scope.errors = {};
+
+    $scope.button = "MENDAFTAR...";
+
+    $http({
+      method  : 'POST',
+      url     : 'http://127.0.0.1:8000/v1/dota',
+      data    : $.param($scope.dataTeam),
+      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+     })
+    .then(function(response) {
+      switch (response.status) {
+        case 400:
+          $scope.errors = response.data.errors;
+          $scope.button = "DAFTAR";
+        break;
+        case 500:
+          $scope.errors.ise = "Mohon maaf terdapat kesalahan di bagian server.";
+          $scope.button = "DAFTAR";
+          break;
+        default:
+
+          $scope.dataCaptain.members[0]['role'] = 'Captain';
+
+          $http({
+            method  : 'POST',
+            url     : 'http://127.0.0.1:8000/v1/dota/'+response.data.data.id+'/members',
+            data    : $.param($scope.dataCaptain),
+            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+           })
+          .then(function(response) {
+            switch (response.status) {
+              case 400:
+                $scope.errors = response.data.errors;
+                $scope.button = "DAFTAR";
+              break;
+              case 500:
+                $scope.errors.ise = "Mohon maaf terdapat kesalahan di bagian server.";
+                $scope.button = "DAFTAR";
+                break;
+              default:
+                $window.location.href = 'pendaftaran-berhasil.html';
+                $scope.button = "DAFTAR";
+            }
+          });
+
+      }
+    });
+  }
+});
+
+</script>
+
 </body>
 </html>
