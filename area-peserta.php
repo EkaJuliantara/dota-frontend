@@ -10,7 +10,7 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta charset="utf-8">
     <title>DOTA 2 Competition - Area Peserta</title>
-    <meta name="description" content="dota2">
+    <meta name="description" content="DOTA 2 Competition">
     <meta name="author" content="Panitia IFEST #5 UAJY">
 
     <!-- Mobile Specific Metas
@@ -26,7 +26,7 @@
 
     <!-- Favicon
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <!--<link rel="icon" type="image/png" href="images/favicon.png">-->
+    <link rel="icon" type="image/png" href="images/favicon.png">
   </head>
   <body>
     <section id="site-menu" class="site-menu putih">

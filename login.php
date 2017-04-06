@@ -11,12 +11,13 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>dota2 - Pendaftaran Berhasil</title>
-  <meta name="description" content="dota2">
+  <title>DOTA 2 Competition - Masuk Area Peserta</title>
+  <meta name="description" content="DOTA 2 Competition">
   <meta name="author" content="Panitia IFEST #5 UAJY">
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <!-- CSS
@@ -57,14 +58,13 @@
     <div class="container">
         <div class="row">
             <div class="twelve columns">
-                <a href="#"><img class="logo" src="Logo-Dota.png"></a>
+                <a href="index.html"><img class="logo" src="Logo-Dota.png"></a>
                 <div class="hamburger"><span><span class="openbtn" onclick="openNav()">&#9776;</span><span class="closebtn" onclick="closeNav()" >&#735;</span></span> <a href="#"><img class="logo2" src="Logo-Dota.png"></a></div>
                 <nav class="menu" id="menu">
                     <ul>
                         <li><a class="menu-link" onclick="closeNav()" href="index.html#opening">Home</a></li>
-                        <li><a class="menu-link" onclick="closeNav()" href="index.html#bab1" >Tentang dota2</a></li>
+                        <li><a class="menu-link" onclick="closeNav()" href="index.html#bab1" >Tentang</a></li>
                         <li><a class="menu-link" onclick="closeNav()" href="index.html#bab2" >Hadiah</a></li>
-                        <li><a class="menu-link" onclick="closeNav()" href="index.html#kategori" >Kategori</a></li>
                         <li><a class="menu-link" onclick="closeNav()" href="index.html#bab3" >Registrasi</a></li>
                         <li><a class="menu-link" onclick="closeNav()" href="area-peserta.php" >Area Peserta</a></li>
                     </ul>
