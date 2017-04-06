@@ -221,7 +221,7 @@
 
     $scope.getTeam = function() {
 
-      $http.get("http://127.0.0.1:8000/v1/dota/"+$scope.idTeam).then(function (response) {
+      $http.get("http://api.ifest-uajy.com/v1/dota/"+$scope.idTeam).then(function (response) {
 
         $scope.dataTeamLoaded = 0;
         $scope.dataTeam = response.data.data;
@@ -242,7 +242,7 @@
     }
 
     $scope.getDetail = function() {
-      $http.get("http://127.0.0.1:8000/v1/dota/"+$scope.idTeam).then(function (response) {
+      $http.get("http://api.ifest-uajy.com/v1/dota/"+$scope.idTeam).then(function (response) {
 
         $scope.dataDetailsLoaded = 0;
         $('.details').remove();
@@ -301,7 +301,7 @@
     $scope.addDetailProcess = function() {
       $http({
         method  : 'PATCH',
-        url     : 'http://127.0.0.1:8000/v1/dota/'+$scope.idTeam,
+        url     : 'http://api.ifest-uajy.com/v1/dota/'+$scope.idTeam,
         data    : $.param($scope.dataDetail),
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
        })
@@ -319,7 +319,7 @@
 
       $http({
         method  : 'PATCH',
-        url     : 'http://127.0.0.1:8000/v1/dota/'+$scope.idTeam,
+        url     : 'http://api.ifest-uajy.com/v1/dota/'+$scope.idTeam,
         data    : $.param($scope.dataDetail),
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
        })
@@ -338,7 +338,7 @@
 
       $http({
         method  : 'PATCH',
-        url     : 'http://127.0.0.1:8000/v1/dota/'+$scope.idTeam,
+        url     : 'http://api.ifest-uajy.com/v1/dota/'+$scope.idTeam,
         data    : $.param($scope.dataTeam),
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
        })
@@ -384,7 +384,7 @@
     $scope.getMembers = function() {
 
       $scope.dataMembersLoaded = 0;
-      $http.get("http://127.0.0.1:8000/v1/dota/"+$scope.idTeam+'/members').then(function (response) {
+      $http.get("http://api.ifest-uajy.com/v1/dota/"+$scope.idTeam+'/members').then(function (response) {
         if (response.data.data) {
           $scope.dataMembers = response.data.data;
         }else{
@@ -451,7 +451,7 @@
 
           $http({
             method  : 'POST',
-            url     : 'http://127.0.0.1:8000/v1/dota/'+$scope.idTeam+'/members',
+            url     : 'http://api.ifest-uajy.com/v1/dota/'+$scope.idTeam+'/members',
             data    : $.param($scope.newMembers),
             headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
            })
@@ -512,7 +512,7 @@
 
       $http({
         method  : 'PATCH',
-        url     : 'http://127.0.0.1:8000/v1/dota/'+$scope.idTeam+'/members/'+data.id,
+        url     : 'http://api.ifest-uajy.com/v1/dota/'+$scope.idTeam+'/members/'+data.id,
         data    : $.param(data),
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
        })
@@ -534,7 +534,7 @@
 
       $('.btn.delete-member.'+id).text('Menghapus...');
 
-      $http.delete('http://127.0.0.1:8000/v1/dota/'+$scope.idTeam+'/members/'+id).then(function (response) {
+      $http.delete('http://api.ifest-uajy.com/v1/dota/'+$scope.idTeam+'/members/'+id).then(function (response) {
         $scope.getMembers();
       })
       .then(function(data) {

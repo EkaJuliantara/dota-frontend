@@ -255,7 +255,7 @@ registerApp.controller("registerCtrl", function($scope, $http, $window) {
 
     $http({
       method  : 'POST',
-      url     : 'http://127.0.0.1:8000/v1/dota',
+      url     : 'http://api.ifest-uajy.com/v1/dota',
       data    : $.param($scope.dataTeam),
       headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
      })
@@ -275,7 +275,7 @@ registerApp.controller("registerCtrl", function($scope, $http, $window) {
 
           $http({
             method  : 'POST',
-            url     : 'http://127.0.0.1:8000/v1/dota/'+response.data.data.id+'/members',
+            url     : 'http://api.ifest-uajy.com/v1/dota/'+response.data.data.id+'/members',
             data    : $.param($scope.dataCaptain),
             headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
            })
