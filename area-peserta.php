@@ -393,9 +393,11 @@
         $scope.dataMembersLoaded = 1;
 
         angular.forEach($scope.dataMembers, function(value, key) {
-          $http.get("http://api.ifest-uajy.com/v1/media/"+value.media_id).then(function (response) {
-            value.media_name = response.data.data.file_name;
-          });
+          if (value.media_id != 0) {
+            $http.get("http://api.ifest-uajy.com/v1/media/"+value.media_id).then(function (response) {
+              value.media_name = response.data.data.file_name;
+            });
+          }
         });
 
         $('.new-member').remove();
