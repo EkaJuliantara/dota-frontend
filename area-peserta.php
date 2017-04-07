@@ -131,15 +131,15 @@
                       </td>
                       <td>
                         <a ng-show="data.media_id" href="http://api.ifest-uajy.com/storage/media/{{ data.media_name }}" target="_blank">Lihat</a>
-                        <div ng-show="data.role == 'Captain' && !data.media_id">
+                        <div ng-show="data.role == 'Captain' && data.media_id == 0">
                           <button type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-size="10MB" class="btn">Unggah</button>
                           <br>
                           <span>{{ infoMedia }}</span>
                         </div>
                       </td>
                       <td>
-                        <button ng-hide="hideMember == data.id || !data.media_id" ng-click="hidingUpdateMember(data.id)" type="button" class="btn">Sunting</button>
-                        <button ng-show="hideMember == data.id || (data.role == 'Captain' && !data.media_id)" ng-click="updateMember(data)" type="button" class="btn">{{ btnUpdate }}</button>
+                        <button ng-hide="hideMember == data.id || data.media_id == 0" ng-click="hidingUpdateMember(data.id)" type="button" class="btn">Sunting</button>
+                        <button ng-show="hideMember == data.id || (data.role == 'Captain' && data.media_id == 0)" ng-click="updateMember(data)" type="button" class="btn">{{ btnUpdate }}</button>
                         <button ng-hide="data.role == 'Captain'" ng-click="destroyMember(data.id)" type="button" class="btn delete-member {{ data.id }}">Hapus</button>
                       </td>
                     </tr>
@@ -385,7 +385,7 @@
 
       $scope.dataMembersLoaded = 0;
       $http.get("http://api.ifest-uajy.com/v1/dota/"+$scope.idTeam+'/members').then(function (response) {
-        if (response.data.data && !response.data.data.media_id) {
+        if (response.data.data) {
           $scope.dataMembers = response.data.data;
         }else{
           $scope.dataMembers = 0;
@@ -480,7 +480,7 @@
 
     $scope.updateMember = function(data) {
 
-      if (data.role == 'Captain' && !data.media_id) {
+      if (data.role == 'Captain' && data.media_id == 0) {
         if ($scope.media) {
 
           $scope.btnUpdate = "Menyimpan...";
