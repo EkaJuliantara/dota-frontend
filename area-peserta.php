@@ -130,7 +130,7 @@
                         <span ng-hide="hideMember == data.id && data.role != 'Captain'">{{ data.role }}</span>
                       </td>
                       <td>
-                        <a ng-show="data.media_id" href="http://api.ifest-uajy.com/storage/media/{{ data.media_name }}" target="_blank">Lihat</a>
+                        <a ng-show="data.media_id != 0" href="http://api.ifest-uajy.com/storage/media/{{ data.media_name }}" target="_blank">Lihat</a>
                         <div ng-show="data.role == 'Captain' && data.media_id == 0">
                           <button type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-size="10MB" class="btn">Unggah</button>
                           <br>
