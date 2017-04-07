@@ -250,7 +250,7 @@
 
         $scope.dataTeam = response.data.data;
 
-        if ($scope.dataTeam.media_id != 0 || $scope.dataTeam.media_id != null) {
+        if ($scope.dataTeam.media_id != 0 && $scope.dataTeam.media_id != null) {
 
             $http.get("http://api.ifest-uajy.com/v1/media/"+response.data.data.media_id).then(function (response) {
               $scope.dataTeam.media_name = response.data.data.file_name;
