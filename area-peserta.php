@@ -130,7 +130,7 @@
                         <span ng-hide="hideMember == data.id && data.role != 'Captain'">{{ data.role }}</span>
                       </td>
                       <td>
-                        <a ng-show="data.media_id" href="http://127.0.0.1:8000/storage/media/{{ data.media_name }}" target="_blank">Lihat</a>
+                        <a ng-show="data.media_id" href="http://api.ifest-uajy.com/storage/media/{{ data.media_name }}" target="_blank">Lihat</a>
                         <div ng-show="data.role == 'Captain' && !data.media_id">
                           <button type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-size="10MB" class="btn">Unggah</button>
                           <br>
@@ -256,7 +256,7 @@
               $scope.dataTeam.media_name = response.data.data.file_name;
             });
 
-          var row = angular.element('<tr class="details"><td><a href="http://127.0.0.1:8000/storage/media/{{ dataTeam.media_name }}" target="_blank">Lihat</a><td><span ng-show="dataTeam.status == 0">Tidak lolos</span><span ng-show="dataTeam.status == NULL">Menunggu verifikasi</span><span ng-show="dataTeam.status == 1">Lolos</span></td><td><button ng-show="dataTeam.status != 1" ng-click="destroyDetail(dataTeam.id)" type="button" class="btn delete-detail {{ dataTeam.id }}">Hapus</button></td></tr>');
+          var row = angular.element('<tr class="details"><td><a href="http://api.ifest-uajy.com/storage/media/{{ dataTeam.media_name }}" target="_blank">Lihat</a><td><span ng-show="dataTeam.status == 0">Tidak lolos</span><span ng-show="dataTeam.status == NULL">Menunggu verifikasi</span><span ng-show="dataTeam.status == 1">Lolos</span></td><td><button ng-show="dataTeam.status != 1" ng-click="destroyDetail(dataTeam.id)" type="button" class="btn delete-detail {{ dataTeam.id }}">Hapus</button></td></tr>');
 
           $('#detail-list').append(row);
 
