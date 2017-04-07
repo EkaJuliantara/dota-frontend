@@ -385,7 +385,7 @@
 
       $scope.dataMembersLoaded = 0;
       $http.get("http://api.ifest-uajy.com/v1/dota/"+$scope.idTeam+'/members').then(function (response) {
-        if (response.data.data) {
+        if (response.data.data && response.data.data.media_id) {
           $scope.dataMembers = response.data.data;
         }else{
           $scope.dataMembers = 0;
