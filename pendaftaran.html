@@ -271,6 +271,7 @@ registerApp.controller("registerCtrl", function($scope, $http, $window) {
           break;
         default:
 
+          $scope.dataCaptain.members[0]['media_id'] = 0;
           $scope.dataCaptain.members[0]['role'] = 'Captain';
 
           $http({
