@@ -252,7 +252,7 @@
 
         if ($scope.dataTeam.media_id) {
 
-            $http.get("http://127.0.0.1:8000/v1/media/"+response.data.data.media_id).then(function (response) {
+            $http.get("http://api.ifest-uajy.com/v1/media/"+response.data.data.media_id).then(function (response) {
               $scope.dataTeam.media_name = response.data.data.file_name;
             });
 
@@ -282,7 +282,7 @@
         $scope.btnSave = "Menyimpan...";
 
         $scope.media.upload = Upload.upload({
-            url: 'http://127.0.0.1:8000/v1/media',
+            url: 'http://api.ifest-uajy.com/v1/media',
             data: { media: $scope.media }
         }).then(function (response) {
 
@@ -393,7 +393,7 @@
         $scope.dataMembersLoaded = 1;
 
         angular.forEach($scope.dataMembers, function(value, key) {
-          $http.get("http://127.0.0.1:8000/v1/media/"+value.media_id).then(function (response) {
+          $http.get("http://api.ifest-uajy.com/v1/media/"+value.media_id).then(function (response) {
             value.media_name = response.data.data.file_name;
           });
         });
@@ -441,7 +441,7 @@
         $scope.btnSave = "Menyimpan...";
 
         $scope.media.upload = Upload.upload({
-            url: 'http://127.0.0.1:8000/v1/media',
+            url: 'http://api.ifest-uajy.com/v1/media',
             data: {media: $scope.media}
         });
 
@@ -486,7 +486,7 @@
           $scope.btnUpdate = "Menyimpan...";
 
           $scope.media.upload = Upload.upload({
-              url: 'http://127.0.0.1:8000/v1/media',
+              url: 'http://api.ifest-uajy.com/v1/media',
               data: { media: $scope.media }
           }).then(function (response) {
 
